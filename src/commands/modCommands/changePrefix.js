@@ -21,7 +21,7 @@ module.exports = async (client) => {
 
       await mongodb().then(async (mongoose) => {
         try {
-          await prefixSchema.findOneAndUpdate(guild.id, {
+          await prefixSchema.findByIdAndUpdate(guild.id, {
             serverPrefix: newPrefix
           });
 
@@ -32,7 +32,7 @@ module.exports = async (client) => {
       });
     } else if (command[0] === "prefix" && !newPrefix) {
       return message.reply(
-        "type '!prefix help' for more info how to use the command."
+        "You must include the new prefix as the second argument."
       );
     }
   });

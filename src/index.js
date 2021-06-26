@@ -27,6 +27,7 @@ client.on("ready", async () => {
 
   const guildId = client.guilds.cache.map((guild) => guild.id)[0];
 
+  // Create default prefix automatically if there's no prefix found inside the database
   await mongodb().then(async (mongoose) => {
     try {
       const result = await prefixSchema.findById(guildId);
