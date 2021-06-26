@@ -1,6 +1,5 @@
 const { MessageEmbed } = require("discord.js");
 
-const { prefix: defaultPrefix } = require("../../config/config.json");
 const { loadPrefix } = require("../../config/serverPrefix");
 
 module.exports = async (client) => {

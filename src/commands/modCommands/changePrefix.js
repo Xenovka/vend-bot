@@ -9,34 +9,28 @@ module.exports = async (client) => {
   client.on("message", async (message) => {
     const { content, guild, member } = message;
 
-    const command = content.replace(prefix[guild.id], "");
+    const command = content.replace(prefix[guild.id], "").split(" ");
+    const newPrefix = command[1];
 
-    if (command === "prefix") {
+    if (command[0] === "prefix" && newPrefix) {
       if (!member.hasPermission("ADMINISTRATOR")) {
         return message.reply(
           "You do not have permission to change bot prefix!"
         );
       }
 
-      const newPrefix = command.split(" ");
-      console.log(newPrefix);
+      await mongodb().then(async (mongoose) => {
+        try {
+          await prefixSchema.findOneAndUpdate(guild.id, {
+            serverPrefix: newPrefix
+          });
 
-      if (newPrefix[1]) {
-        await mongodb().then(async (mongoose) => {
-          try {
-            await prefixSchema.findOneAndUpdate(guild.id, {
-              serverPrefix: newPrefix
-            });
-
-            message.reply(
-              `Prefix changed! now the bot prefix is '${newPrefix}'`
-            );
-          } finally {
-            mongoose.connection.close();
-          }
-        });
-      }
-
+          message.reply(`Prefix changed! now the bot prefix is '${newPrefix}'`);
+        } finally {
+          mongoose.connection.close();
+        }
+      });
+    } else if (command[0] === "prefix" && !newPrefix) {
       return message.reply(
         "type '!prefix help' for more info how to use the command."
       );
