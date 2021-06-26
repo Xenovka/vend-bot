@@ -1,10 +1,14 @@
-const { prefix } = require("../../config/config.json");
+const { prefix: defaultPrefix } = require("../../config/config.json");
+const { loadPrefix } = require("../../config/serverPrefix");
 
-module.exports = (client) => {
+module.exports = async (client) => {
+  const prefix = {};
+  await loadPrefix(client, prefix);
+
   client.on("message", async (message) => {
     const { content, guild, member } = message;
 
-    const command = content.replace(prefix, "");
+    const command = content.replace(prefix[guild.id], "");
 
     if (!guild) return;
 

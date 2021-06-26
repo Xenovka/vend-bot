@@ -1,8 +1,12 @@
 const { MessageEmbed } = require("discord.js");
 
-const { prefix } = require("../../config/config.json");
+const { prefix: defaultPrefix } = require("../../config/config.json");
+const { loadPrefix } = require("../../config/serverPrefix");
 
-module.exports = (client) => {
+module.exports = async (client) => {
+  const prefix = {};
+  await loadPrefix(client, prefix);
+
   client.on("message", (message) => {
     const { content, channel, guild } = message;
 
@@ -29,7 +33,7 @@ module.exports = (client) => {
       .setColor("ORANGE")
       .setTimestamp();
 
-    const command = content.replace(prefix, "");
+    const command = content.replace(prefix[guild.id], "");
     if (command === "server") {
       channel.send(embed);
     }

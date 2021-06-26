@@ -1,11 +1,15 @@
 const { MessageEmbed } = require("discord.js");
-const { prefix } = require("../../config/config.json");
+const { prefix: defaultPrefix } = require("../../config/config.json");
+const { loadPrefix } = require("../../config/serverPrefix");
 
-module.exports = (client) => {
+module.exports = async (client) => {
+  const prefix = {};
+  await loadPrefix(client, prefix);
+
   client.on("message", (message) => {
-    const { content, channel } = message;
+    const { content, channel, guild } = message;
 
-    const command = content.replace(prefix, "");
+    const command = content.replace(prefix[guild.id], "");
     if (command == "help") {
       const embed = new MessageEmbed()
         .setAuthor("💬 Available Commands")
@@ -32,6 +36,12 @@ module.exports = (client) => {
           {
             name: "Socials 👀",
             value: "[`avatar`](https://discord.com/ 'Showing user's avatar')",
+            inline: true
+          },
+          {
+            name: "Moderation 👨‍💻",
+            value:
+              "[`prefix`](https://discord.com/ 'Changing bot prefix. Default prefix is '!' ')",
             inline: true
           }
         );

@@ -1,7 +1,11 @@
 const { MessageEmbed } = require("discord.js");
-const { prefix } = require("../../config/config.json");
+const { prefix: defaultPrefix } = require("../../config/config.json");
+const { loadPrefix } = require("../../config/serverPrefix");
 
-module.exports = (client) => {
+module.exports = async (client) => {
+  const prefix = {};
+  await loadPrefix(client, prefix);
+
   client.on("message", (message) => {
     const { content, author, channel } = message;
 
@@ -11,8 +15,8 @@ module.exports = (client) => {
       .setFooter("Your avatar looks soo . . . .")
       .setTimestamp();
 
-    const command = content.replace(prefix, "");
-    if (command === "avatar") {
+    const command = content.replace(prefix[message.guild.id], "");
+    if (command == "avatar") {
       channel.send(embed);
     }
   });

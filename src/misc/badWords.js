@@ -1,4 +1,19 @@
-const { badWords } = require("../config/config.json");
+const badWords = [
+  "ajg",
+  "ppk",
+  "pepek",
+  "kontol",
+  "kntl",
+  "babi",
+  "bbi",
+  "anjing",
+  "anjeng",
+  "pler",
+  "puki",
+  "kimak",
+  "memek",
+  "mmk"
+];
 
 module.exports = (client) => {
   client.on("message", async (message) => {
