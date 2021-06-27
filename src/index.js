@@ -13,9 +13,10 @@ const welcomeMessage = require("./misc/welcomeMessage");
 const changePrefix = require("./commands/modCommands/changePrefix");
 const mongodb = require("./db/mongodb");
 const prefixSchema = require("./db/schema/prefixSchema");
+const voiceLeave = require("./commands/voiceCommands/voiceLeave");
 
 client.on("ready", async () => {
-  console.log(`Logged In as ${client.user.tag}`);
+  console.log("Hi Xen!");
 
   const botPresence = await client.user.setPresence({
     activity: {
@@ -53,6 +54,7 @@ client.on("ready", async () => {
   avatarInfo(client);
   helpCommands(client);
   voiceJoin(client);
+  voiceLeave(client);
   inviteLink(client);
 
   // Chat Responses
