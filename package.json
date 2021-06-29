@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/index.js"
+    "start": "nodemon ./index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Xenosia",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@discordjs/opus": "^0.5.3",
     "discord.js": "^12.5.3",
     "express": "^4.17.1",
+    "ffmpeg-static": "^4.4.0",
     "mongoose": "^5.12.15"
   },
   "devDependencies": {
