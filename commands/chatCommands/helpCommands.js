@@ -22,7 +22,7 @@ module.exports = {
         {
           name: "Voice Commands 🎶",
           value:
-            "[`dc`](https://discord.com 'Disconnecting the bot from the Voice Channel') [`join`](https://discord.com/ 'Telling the bot to join a Voice Channel')",
+            "[`dc`](https://discord.com 'Disconnecting the bot from the Voice Channel') [`join`](https://discord.com/ 'Telling the bot to join a Voice Channel') [`play`](https://discord.com/ 'Playing an audio from youtube')",
           inline: true
         },
         {
