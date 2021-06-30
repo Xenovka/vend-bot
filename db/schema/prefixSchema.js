@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
 
-const prefixSchema = new Schema({
+const prefixSchema = new mongoose.Schema({
   _id: {
     type: String,
     required: true
