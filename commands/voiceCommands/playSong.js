@@ -81,4 +81,5 @@ const musicPlayer = async (channel, guild, song) =>{
       musicQueue.songs.shift()
       musicPlayer(channel, guild, musicQueue.songs[0])
     })
+    .setBitrate('auto')
 }
