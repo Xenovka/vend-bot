@@ -22,7 +22,7 @@ module.exports = {
         {
           name: "Voice Commands 🎶",
           value:
-            "[`dc`](https://discord.com 'Disconnecting the bot from the Voice Channel') [`join`](https://discord.com/ 'Telling the bot to join a Voice Channel') [`play`](https://discord.com/ 'Playing an audio from youtube') [`lyrics`](https://www.npmjs.com/package/lyrics-finder/ 'Find a song lyrics.')",
+            "[`dc`](https://discord.com 'Disconnecting the bot from the Voice Channel') [`join`](https://discord.com/ 'Telling the bot to join a Voice Channel') [`play`](https://discord.com/ 'Playing an audio from youtube. Usage: play [songTitle]') [`lyrics`](https://www.npmjs.com/package/lyrics-finder/ 'Find a song lyrics. Usage: lyrics [songTitle]') [`skip`](https://discord.com/ 'Skip current playing song.')",
           inline: true
         },
         {
