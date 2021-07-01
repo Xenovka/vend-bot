@@ -6,7 +6,7 @@ module.exports = {
     const embed = new MessageEmbed()
       .setAuthor("💬 Available Commands")
       .setColor("ORANGE")
-      .setFooter("hover over a commands for more info about that command!")
+      .setFooter("hover over a commands for more infomations about that command!")
       .setURL("https://www.remote.tools/remote-work/discord-everyone-here")
       .setTimestamp()
       .setDescription(
@@ -22,7 +22,7 @@ module.exports = {
         {
           name: "Voice Commands 🎶",
           value:
-            "[`dc`](https://discord.com 'Disconnecting the bot from the Voice Channel') [`join`](https://discord.com/ 'Telling the bot to join a Voice Channel') [`play`](https://discord.com/ 'Playing an audio from youtube')",
+            "[`dc`](https://discord.com 'Disconnecting the bot from the Voice Channel') [`join`](https://discord.com/ 'Telling the bot to join a Voice Channel') [`play`](https://discord.com/ 'Playing an audio from youtube') [`lyrics`](https://www.npmjs.com/package/lyrics-finder/ 'Find a song lyrics.')",
           inline: true
         },
         {
