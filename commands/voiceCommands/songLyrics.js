@@ -3,7 +3,7 @@ const lyricsfinder = require('lyrics-finder')
 const { MessageEmbed } = require("discord.js")
 
 module.exports = {
-  commands: ['lyrics', 'l'],
+  commands: 'lyrics',
   expectedArgs: '[songTitle]',
   minArgs: 1,
   maxArgs: 20,
