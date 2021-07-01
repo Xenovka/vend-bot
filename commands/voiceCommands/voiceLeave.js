@@ -1,14 +1,10 @@
 module.exports = {
-  commands: ['dc', 'leave'],
-  callback: async (message, arguments, argsText) => {
-    const {member} = message
+  commands: 'dc',
+  callback: (message, arguments, argsText) => {
+    const {member, channel} = message
 
     if (member.voice.channel) {
-      const disconnect = await member.voice.channel
-        .join()
-        .then((connection) => {
-          return connection.disconnect();
-        });
+      member.voice.channel.leave()
     } else {
       message.reply(
         "You must be in the voice channel before u tell me to leave the voice channel!"
