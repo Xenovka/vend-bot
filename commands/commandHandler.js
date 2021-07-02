@@ -57,7 +57,7 @@ module.exports = async (client, commandOptions) => {
           return
         }
 
-        callback(message, arguments, arguments.join(' '), prefix, client) 
+        callback(message, arguments, arguments.join(' ')) 
         
       }
     }
