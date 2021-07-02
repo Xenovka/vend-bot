@@ -9,7 +9,7 @@ module.exports = async (client) => {
     try {
       const result = await prefixSchema.findById(guildId);
 
-      if (result === null) {
+      if (!result) {
         await new prefixSchema({
           _id: guildId,
           serverPrefix: "!"
