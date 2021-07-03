@@ -27,12 +27,16 @@ module.exports = {
     if (member.voice.channel) {
       await mongodb().then(async mongoose => {
         try {
+          let countDocs = await songSchema.countDocuments({guildId}).exec()
+
           await new songSchema({
             guildId,
             songTitle,
             songURL,
             songDuration,
-            author
+            author,
+            nowPlaying: false,
+            queueNumber: countDocs + 1
           }).save()
         } finally {
           mongoose.connection.close()
@@ -71,7 +75,6 @@ module.exports = {
           try {
             const findSong = await songSchema.findOne({songTitle}) 
             serverQueue.songs.push(findSong)
-            console.log(serverQueue);
 
             const embeds = new MessageEmbed()
                   .setColor("ORANGE")
@@ -99,22 +102,32 @@ const songPlayer = async (channel, guildId, song) => {
   await songQueue.connection.voice.setSelfDeaf(true)
 
   if(!song) {
+    await mongodb().then(async mongoose => {
+      try { await songSchema.deleteMany({guildId}) } 
+      finally { mongoose.connection.close() }
+    })
     songQueue.connection.disconnect()
     queue.delete(guildId)
-    
-    await mongodb().then(async mongoose => {
-      try {
-        await songSchema.deleteMany({guildId})
-      } finally {
-        mongoose.connection.close()
-      }
-    })
-
     return channel.send('Queue is empty now. Bye-bye.')
   }
 
+  await mongodb().then(async mongoose => {
+    try{
+      await songSchema.findOneAndUpdate({songTitle: song.songTitle}, {$set: {nowPlaying: true}})
+    } finally {
+      mongoose.connection.close()
+    }
+  })
+
   songQueue.connection.play(ytdl(song.songURL, {filter: 'audioonly'}), {volume: 0.5})
-    .on('finish', () => {
+    .on('finish', async () => {
+      await mongodb().then(async mongoose => {
+        try {
+          await songSchema.findOneAndUpdate({songTitle: song.songTitle}, {$set: {nowPlaying: false}})
+        } finally {
+          mongoose.connection.close()
+        }
+      })
       songQueue.songs.shift()
       songPlayer(channel, guildId, songQueue.songs[0])
     })
