@@ -10,7 +10,15 @@ const songSchema = new mongoose.Schema({
   songTitle: stringRequired,
   songURL: stringRequired,
   songDuration: stringRequired,
-  author: stringRequired
+  author: stringRequired,
+  nowPlaying: {
+    type: Boolean,
+    required: true
+  },
+  queueNumber: {
+    type: Number,
+    required: true
+  }
 });
 
 module.exports = mongoose.model("song-data", songSchema);
