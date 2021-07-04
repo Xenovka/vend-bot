@@ -1,3 +1,4 @@
+const ytdl = require("ytdl-core")
 const mongodb = require("../../db/mongodb")
 const songSchema = require("../../db/schema/songSchema")
 
@@ -9,7 +10,7 @@ module.exports = {
     if(member.voice.channel) {
       await mongodb().then(async mongoose => {
         try {
-          const songs = await songSchema.findOneAndUpdate({nowPlaying: true}, {$set: {nowPlaying: false}})
+          const songs = await songSchema.findOneAndRemove({nowPlaying: true})
           const index = songs.queueNumber;
   
           if(!index) {
@@ -20,7 +21,11 @@ module.exports = {
             return channel.send('Empty Queue!')
           }
   
-          await songSchema.findOneAndUpdate({queueNumber: index + 1}, {$set: {nowPlaying: true}}) // Set the next song to be played
+          // Set the next song to be played
+          const updated = await songSchema.findOneAndUpdate({queueNumber: index + 1}, {$set: {nowPlaying: true}}) 
+          await member.voice.channel.join().then(connection => {
+            connection.play(ytdl(updated.songURL, {filter: 'audioonly'}), {volume: 0.5})
+          })
   
         } finally {
           mongoose.connection.close()
