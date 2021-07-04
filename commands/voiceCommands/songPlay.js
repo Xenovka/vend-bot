@@ -7,7 +7,7 @@ const songSchema = require("../../db/schema/songSchema")
 let queue = new Map()
 
 module.exports = {
-  commands: 'play',
+  commands: ['play', 'p'],
   expectedArgs: '[songTitle]',
   minArgs: 1,
   maxArgs: 20,
