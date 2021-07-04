@@ -31,7 +31,9 @@ module.exports = async (client, commandOptions) => {
     const prefix = loadedPrefix[guild.id]
 
     for(const alias of commands) {
-      if(content.toLowerCase().startsWith(`${prefix}${alias.toLowerCase()}`)) {
+      const arguments = content.split(/[ ]+/)
+
+      if(arguments[0] === prefix + alias) {
         for (const permission of permissions) {
           if(!member.hasPermission(permission)) {
             message.reply(permissionError)
@@ -47,8 +49,6 @@ module.exports = async (client, commandOptions) => {
             message.reply(`You must have ${requiredRole} to use that command.`)
           }
         }
-
-        const arguments = content.split(/[ ]+/)
 
         arguments.shift()
 
