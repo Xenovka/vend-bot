@@ -33,7 +33,7 @@ module.exports = {
         {
           name: "Moderation 👨‍💻",
           value:
-            "[`prefix`](https://discord.com/ 'Changing bot prefix. Default prefix is '!' ')",
+            "[`prefix`](https://discord.com/ 'Changing bot prefix. Default prefix is '!' ') [`mute`](https://discord.com/ 'mute a member. Usage: [@member] [minute] [reasons]]')",
           inline: true
         }
       );
