@@ -3,7 +3,7 @@ const mongodb = require("../../db/mongodb")
 const songSchema = require("../../db/schema/songSchema")
 
 module.exports = {
-  commands: 'queue',
+  commands: ['queue', 'q'],
   callback: async (message, arguments, argsText) => {
     const {guild, channel} = message
 
