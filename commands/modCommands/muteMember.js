@@ -22,7 +22,7 @@ module.exports = {
     if (mutedDuration > 60) {
       channel.send("You can't mute a member more than 1 hour!")
       return
-    } else if (mutedDuration <= 0) {
+    } else if (mutedDuration === 0) {
       channel.send("You should mute a member 1 or more than 1 minute!")
       return
     } else if (isNaN(mutedDuration)) {
