@@ -1,6 +1,6 @@
 module.exports = {
   commands: 'kick',
-  expectedArgs: '[@user] [reasons]',
+  expectedArgs: '[@member] [reasons]',
   permissionError:
   'Only member with permission of "ADMINISTRATOR" can use this command.',
   minArgs: 1,
