@@ -16,7 +16,7 @@ module.exports = {
         {
           name: "Core Commands ⚙",
           value:
-            "[`help`](https://discord.com/ 'Showing available commands') [`server`](https://discord.com/ 'Showing server info') [`invite`](https://discord.com/ 'Creating Server's invite link')",
+            "[`help`](https://discord.com/ 'Showing available commands') [`server`](https://discord.com/ 'Showing server info') [`invite`](https://discord.com/ 'Creating Server's invite link') [`ping`](https://discord.com/ 'Check Bot and Server Latency')",
           inline: true
         },
         {
