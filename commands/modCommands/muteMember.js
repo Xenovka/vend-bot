@@ -6,7 +6,7 @@ module.exports = {
   minArgs: 2,
   maxArgs: 30,
   permissions: 'ADMINISTRATOR',
-  callback: async (message, arguments, argsText) => {
+  callback: (message, arguments, argsText) => {
     const {channel, mentions, guild} = message
 
     const mentionedUser = mentions.users.first()
