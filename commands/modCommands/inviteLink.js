@@ -2,6 +2,9 @@
 
 module.exports = {
   commands: 'invite',
+  permissionError:
+    'Only member with permission of "ADMINISTRATOR" can use this command.',
+  permissions: 'ADMINISTRATOR',
   callback: async (message, arguments, argsText) => {
     const {guild, channel} = message
     
