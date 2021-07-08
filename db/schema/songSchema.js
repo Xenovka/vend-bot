@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const mongoosePagination = require("mongoose-paginate-v2");
 
 const stringRequired = {
   type: String,
@@ -20,5 +21,7 @@ const songSchema = new mongoose.Schema({
     required: true
   }
 });
+
+songSchema.plugin(mongoosePagination);
 
 module.exports = mongoose.model("song-data", songSchema);
