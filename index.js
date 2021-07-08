@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const path = require("path");
 const client = new Discord.Client().setMaxListeners(0);
+require("discord-buttons")(client);
 
 const { token } = require("./config/config.json");
 
