@@ -5,7 +5,7 @@ module.exports = (client) => {
   client.on("message", (message) => {
     const { member, guild } = message;
 
-    if (member.id === "850007516783575090") return;
+    if (member.user.bot) return;
 
     addXP(guild.id, member.id, 27, message);
   });
