@@ -1,30 +1,77 @@
 const { MessageEmbed } = require("discord.js");
+const moment = require('moment')
 
 module.exports = {
   commands: 'server',
-  callback: (message, arguments, argsText) => {
+  callback: async (message, arguments, argsText) => {
     const {guild, channel} = message
+    const fetchMember = await guild.fetchPreview()
+
+    const guildName = guild.name
+    const guildIcon = guild.iconURL()
+    const guildId = guild.id
+    const guildOwner = guild.ownerID
+    const totalMember = guild.memberCount
+    const onlineMember = fetchMember.approximatePresenceCount
+    const totalChannels = guild.channels.cache.map(channel => channel).length
+    const totalRoles = guild.roles.cache.map(role => role).length
+    const guildCreatedAt = moment(guild.createdAt).format("ddd, MMMM Do YYYY, hh:mm:ss A")
+
+    let guildEmojis = ''
+
+    guild.emojis.cache.each(emoji => {
+      guildEmojis += `<${emoji.animated ? 'a' : ''}:${emoji.name}:${emoji.id}>`
+    })
 
     const embeds = new MessageEmbed()
+    .setAuthor(guildName, guildIcon)
+    .setThumbnail(guildIcon)
       .addFields(
         {
-          name: "Server Name",
-          value: guild.name,
+          name: 'Server Owner',
+          value: `<@${guildOwner}> ` + "[`" + guild.owner.user.tag + "`]",
+          inline: true
+        },
+        { name: "_ _", value: "_ _", inline: true },
+        {
+          name: 'Server ID',
+          value: guildId,
+          inline: true
+        },
+        {
+          name: 'Members',
+          value: totalMember,
+          inline: true
+        },
+        { name: "_ _", value: "_ _", inline: true },
+        {
+          name: 'Online Members',
+          value: onlineMember,
+          inline: true
+        },
+        {
+          name: 'Channels',
+          value: totalChannels,
+          inline: true,
+        },
+        { name: "_ _", value: "_ _", inline: true },
+        {
+          name: 'Roles',
+          value: totalRoles,
+          inline: true
+        },
+        {
+          name: 'Server Created At',
+          value: guildCreatedAt + " [`" + moment(guild.createdAt).fromNow() + "`]",
           inline: false
         },
         {
-          name: "Total Members",
-          value: guild.memberCount,
-          inline: false
-        },
-        {
-          name: "Server Owner",
-          value: guild.owner,
+          name: 'Emojis',
+          value: guildEmojis,
           inline: false
         }
       )
-      .setThumbnail(guild.iconURL())
-      .setFooter("showing server informations")
+      .setFooter(guildName, guildIcon)
       .setColor("ORANGE")
       .setTimestamp();
 
