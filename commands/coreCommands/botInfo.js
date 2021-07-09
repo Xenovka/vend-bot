@@ -39,7 +39,7 @@ module.exports = {
         { name: "_ _", value: "_ _", inline: true },
         {
           name: 'Created At',
-          value: appCreatedAt + " (`" + moment(app.createdAt).fromNow() + "`)",
+          value: appCreatedAt + " [`" + moment(app.createdAt).fromNow() + "`]",
           inline: true
         },
         {
