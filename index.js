@@ -9,6 +9,7 @@ const { token } = require("./config/config.json");
 const badWords = require("./misc/badWords");
 const welcomeMessage = require("./misc/welcomeMessage");
 const createDefaultPrefix = require("./utils/createDefaultPrefix");
+const levelingSystem = require("./utils/levelingSystem");
 
 client.login(token);
 
@@ -52,4 +53,7 @@ client.on("ready", () => {
   // Chat Responses
   badWords(client);
   welcomeMessage(client);
+
+  // Leveling System
+  levelingSystem(client);
 });
