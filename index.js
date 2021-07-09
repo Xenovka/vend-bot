@@ -3,8 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const client = new Discord.Client().setMaxListeners(0);
 require("discord-buttons")(client);
-
-const { token } = require("./config/config.json");
+require("dotenv").config();
 
 const badWords = require("./misc/badWords");
 const welcomeMessage = require("./misc/welcomeMessage");
@@ -12,7 +11,7 @@ const createDefaultPrefix = require("./utils/createDefaultPrefix");
 const levelingSystem = require("./utils/levelingSystem");
 const economySystem = require("./utils/economySystem");
 
-client.login(token);
+client.login(process.env.TOKEN);
 
 client.on("ready", async () => {
   console.log("Hi Xen!");

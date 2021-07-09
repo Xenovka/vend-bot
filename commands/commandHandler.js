@@ -1,4 +1,4 @@
-const { loadPrefix } = require("../config/serverPrefix");
+const { loadPrefix } = require("../utils/serverPrefix");
 
 module.exports = async (client, commandOptions) => {
   const loadedPrefix = {}
