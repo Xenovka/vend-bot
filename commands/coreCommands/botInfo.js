@@ -10,10 +10,10 @@ module.exports = {
     const appName = app.username
     const appCreatedAt = moment(app.createdAt).format('MMMM Do YYYY')
 
-    const seconds = moment.duration(client.uptime).asSeconds().toFixed()
-    const minutes = moment.duration(client.uptime).asMinutes().toFixed()
-    const hours = moment.duration(client.uptime).asHours().toFixed()
-    const days = moment.duration(client.uptime).asDays().toFixed()
+    const seconds = moment.duration(client.uptime).seconds()
+    const minutes = moment.duration(client.uptime).minutes()
+    const hours = moment.duration(client.uptime).hours()
+    const days = moment.duration(client.uptime).days()
 
     const embeds = new MessageEmbed()
       .setAuthor(appName, appIcon)
