@@ -4,7 +4,7 @@ module.exports = {
   commands: 'help',
   callback: (message, arguments, argsText) => {
     const embed = new MessageEmbed()
-      .setAuthor("💬 Available Commands")
+      .setAuthor("Bot Commands 🤖")
       .setColor("ORANGE")
       .setFooter("hover over a commands for more infomations about that command!")
       .setURL("https://www.remote.tools/remote-work/discord-everyone-here")
@@ -14,20 +14,20 @@ module.exports = {
       )
       .addFields(
         {
-          name: "Core Commands ⚙",
+          name: "Information 👀",
           value:
-            "[`help`](https://discord.com/ 'Showing available commands') [`server`](https://discord.com/ 'Showing server info') [`invite`](https://discord.com/ 'Creating Server's invite link') [`ping`](https://discord.com/ 'Check Bot and Server Latency')",
+            "[`help`](https://discord.com/ 'Showing available commands') [`server`](https://discord.com/ 'Showing server info') [`invite`](https://discord.com/ 'Creating Server's invite link') [`ping`](https://discord.com/ 'Check Bot and Server Latency') [`avatar`](https://discord.com/ 'Showing user's avatar')",
           inline: true
         },
         {
-          name: "Voice Commands 🎶",
+          name: "Voice 🎶",
           value:
             "[`dc`](https://discord.com 'Disconnecting the bot from the Voice Channel') [`join`](https://discord.com/ 'Telling the bot to join a Voice Channel') [`play`](https://discord.com/ 'Playing an audio from youtube. Usage: play [songTitle]') [`lyrics`](https://www.npmjs.com/package/lyrics-finder/ 'Find a song lyrics. Usage: lyrics [songTitle]') \n [`skip`](https://discord.com/ 'Skip current playing song.') [`queue`](https://discord.com/ 'Showing the list of songs in queue.') ",
           inline: true
         },
         {
-          name: "Socials 👀",
-          value: "[`avatar`](https://discord.com/ 'Showing user's avatar')",
+          name: "Socials 💬",
+          value: "[`angry`](https://github.com/uzair-ashraf/ 'angry reaction.') [`happy`](https://github.com/uzair-ashraf/ 'happy reaction.') [`dance`](https://github.com/uzair-ashraf/ 'dance reaction.') [`calm`](https://github.com/uzair-ashraf/ 'calm reaction.') [`confused`](https://github.com/uzair-ashraf/ 'confused reaction.') [`random`](https://github.com/uzair-ashraf/ 'random reaction.') [`exercise`](https://github.com/uzair-ashraf/ 'exercise reaction.') [`sad`](https://github.com/uzair-ashraf/ 'sad reaction.') [`no`](https://github.com/uzair-ashraf/ 'no reaction.') [`yes`](https://github.com/uzair-ashraf/ 'yes reaction.') [`thinking`](https://github.com/uzair-ashraf/ 'thinking reaction.') [`eat`](https://github.com/uzair-ashraf/ 'eat reaction.') [`smug`](https://github.com/uzair-ashraf/ 'smug reaction.')",
           inline: true
         },
         {
@@ -37,8 +37,8 @@ module.exports = {
           inline: true
         },
         {
-          name: "Reaction 😱",
-          value: "[`angry`](https://github.com/uzair-ashraf/ 'angry reaction.') [`happy`](https://github.com/uzair-ashraf/ 'happy reaction.') [`dance`](https://github.com/uzair-ashraf/ 'dance reaction.') [`calm`](https://github.com/uzair-ashraf/ 'calm reaction.') [`confused`](https://github.com/uzair-ashraf/ 'confused reaction.') [`random`](https://github.com/uzair-ashraf/ 'random reaction.') [`exercise`](https://github.com/uzair-ashraf/ 'exercise reaction.') [`sad`](https://github.com/uzair-ashraf/ 'sad reaction.') [`no`](https://github.com/uzair-ashraf/ 'no reaction.') [`yes`](https://github.com/uzair-ashraf/ 'yes reaction.') [`thinking`](https://github.com/uzair-ashraf/ 'thinking reaction.') [`eat`](https://github.com/uzair-ashraf/ 'eat reaction.') [`smug`](https://github.com/uzair-ashraf/ 'smug reaction.')",
+          name: "Coming Soon 🎮",
+          value: "[`some commands still under development by the developer, Thanks.`](https://github.com/Xenovka?tab=repositories 'Coming Soon!')",
           inline: true
         },
         {
