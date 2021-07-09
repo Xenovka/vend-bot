@@ -10,6 +10,7 @@ const badWords = require("./misc/badWords");
 const welcomeMessage = require("./misc/welcomeMessage");
 const createDefaultPrefix = require("./utils/createDefaultPrefix");
 const levelingSystem = require("./utils/levelingSystem");
+const economySystem = require("./utils/economySystem");
 
 client.login(token);
 
@@ -56,4 +57,7 @@ client.on("ready", () => {
 
   // Leveling System
   levelingSystem(client);
+
+  // Economy System
+  economySystem(client);
 });
