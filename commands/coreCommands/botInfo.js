@@ -3,6 +3,7 @@ const moment = require("moment")
 
 module.exports = {
   commands: 'bot',
+  cooldown: 5,
   callback: (message, arguments, argsText, client) => {
     const {channel} = message
     const app = client.user

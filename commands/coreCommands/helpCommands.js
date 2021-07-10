@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   commands: 'help',
+  cooldown: 5,
   callback: (message, arguments, argsText) => {
     const embed = new MessageEmbed()
       .setAuthor("Bot Commands 🤖")

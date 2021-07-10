@@ -5,6 +5,7 @@ const songPlayer = require('../../utils/songPlayer')
 
 module.exports = {
   commands: ['skip', 's'],
+  cooldown: 10,
   callback: async (message, arguments, argsText) => {
     const {channel, guild, member} = message
     

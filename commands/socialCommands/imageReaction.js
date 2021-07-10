@@ -3,6 +3,7 @@ const { MessageEmbed } = require('discord.js')
 
 module.exports = {
   commands: ['angry', 'happy', 'dance', 'calm', 'confused', 'random', 'exercise', 'sad', 'no', 'yes', 'thinking', 'eat', 'smug'],
+  cooldown: 10,
   callback: async (message, arguments, argsText, client, alias) => {
     const {channel, author} = message
 

@@ -3,6 +3,7 @@ const moment = require('moment')
 
 module.exports = {
   commands: 'server',
+  cooldown: 5,
   callback: async (message, arguments, argsText) => {
     const {guild, channel} = message
     const fetchMember = await guild.fetchPreview()

@@ -1,11 +1,14 @@
 const { loadPrefix } = require("../utils/serverPrefix");
 
+let recentlyUsed = []
+
 module.exports = async (client, commandOptions) => {
   const loadedPrefix = {}
   await loadPrefix(client, loadedPrefix)
 
   let {
     commands,
+    cooldown = -1,
     expectedArgs = '',
     permissionError = '',
     minArgs = 0,
@@ -50,11 +53,30 @@ module.exports = async (client, commandOptions) => {
           }
         }
 
+        let cooldownString = `${guild.id}-${member.id}-${commands[0]}`
+
+        if(cooldown > 0 && recentlyUsed.includes(cooldownString)) {
+          message.reply(`Slow down, You have to wait for **${cooldown} seconds** to use this command again.`).then(async msg => {
+            await msg.delete({timeout: 2000})
+          })
+          return
+        }
+
         arguments.shift()
 
         if(arguments.length < minArgs || (maxArgs !== null && arguments.length > maxArgs)) {
           message.reply(`Incorrect command usage! type ${prefix}${alias} ${expectedArgs} to use the command.`)
           return
+        }
+
+        if(cooldown > 0) {
+          recentlyUsed.push(cooldownString)
+  
+          setTimeout(() => {
+            recentlyUsed = recentlyUsed.filter(string => {
+              return string !== cooldownString
+            })
+          }, 1000 * cooldown);
         }
 
         callback(message, arguments, arguments.join(' '), client, alias) 

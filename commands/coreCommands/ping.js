@@ -1,5 +1,6 @@
 module.exports = {
   commands: 'ping',
+  cooldown: 5,
   callback: (message, arguments, argsText, client) => {
     message.channel.send('Loading. . .').then(result => {
       const ping = result.createdTimestamp - message.createdTimestamp

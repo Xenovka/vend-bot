@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   commands: 'avatar',
+  cooldown: 10,
   minArgs: 0,
   maxArgs: 1,
   callback: (message, arguments, argsText) => {
