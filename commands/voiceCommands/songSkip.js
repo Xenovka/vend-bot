@@ -13,7 +13,7 @@ module.exports = {
     const connection = await member.voice.channel.join()
 
     if(member.voice.channel) {
-      await mongodb().then(async mongoose => {
+      await mongodb().then(async () => {
         try {
           const songs = await songSchema.findOneAndRemove({nowPlaying: true})
           let index = songs.queueNumber
@@ -31,8 +31,8 @@ module.exports = {
           const updated = await songSchema.findOneAndUpdate({queueNumber: index + 1}, {$set: {nowPlaying: true}}) 
           songPlayer(channel, guildId, updated, connection)
   
-        } finally {
-          mongoose.connection.close()
+        } catch(err) {
+          console.log(err);
         }
       })
     } else {

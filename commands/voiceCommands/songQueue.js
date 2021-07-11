@@ -7,7 +7,7 @@ module.exports = {
   callback: async (message, arguments, argsText, client) => {
     const {channel} = message
 
-    await mongodb().then(async mongoose => {
+    await mongodb().then(async () => {
       try {
 
         let buttonPrev = new MessageButton()
@@ -60,8 +60,8 @@ module.exports = {
           }
         })
 
-      } finally {
-        mongoose.connection.close()
+      } catch(err) {
+        console.log(err);
       }
     })
   }
@@ -70,7 +70,7 @@ module.exports = {
 const queueMessage = async (pageNum) => {
   let queueMessage = "```elm\n"
 
-  await mongodb().then(async mongoose => {
+  await mongodb().then(async () => {
     try {
       let currentDocs = await songSchema.paginate({}, {page: pageNum, limit: 5})
       let songs = []
@@ -87,8 +87,8 @@ const queueMessage = async (pageNum) => {
         
         queueMessage += `${songs[0][i].queueNumber}) ${title} ${songs[0][i].songDuration}\n`
       }
-    } finally {
-      mongoose.connection.close()
+    } catch(err) {
+      console.log(err);
     }
   })
 

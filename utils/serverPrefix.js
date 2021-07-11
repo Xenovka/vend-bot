@@ -2,7 +2,7 @@ const prefixSchema = require("../db/schema/prefixSchema");
 const mongodb = require("../db/mongodb");
 
 module.exports.loadPrefix = async (client, guildPrefix = {}) => {
-  await mongodb().then(async (mongoose) => {
+  await mongodb().then(async () => {
     try {
       for (const guild of client.guilds.cache) {
         const guildId = guild[1].id;
@@ -11,8 +11,8 @@ module.exports.loadPrefix = async (client, guildPrefix = {}) => {
       }
 
       return guildPrefix;
-    } finally {
-      mongoose.connection.close();
+    } catch (err) {
+      console.log(err);
     }
   });
 };

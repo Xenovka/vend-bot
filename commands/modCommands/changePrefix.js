@@ -14,15 +14,15 @@ module.exports = {
 
     const newPrefix = arguments[0]
 
-    await mongodb().then(async (mongoose) => {
+    await mongodb().then(async () => {
       try {
         await prefixSchema.findByIdAndUpdate(guild.id, {
           serverPrefix: newPrefix
         });
 
         message.reply(`Prefix changed! now the bot prefix is '${newPrefix}'`);
-      } finally {
-        mongoose.connection.close();
+      } catch(err) {
+        console.log(err)
       }
     });
   }

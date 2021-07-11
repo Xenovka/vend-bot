@@ -22,7 +22,7 @@ module.exports = {
 
     if (member.voice.channel) {
       let countDocs;
-      await mongodb().then(async mongoose => {
+      await mongodb().then(async () => {
         try {
           countDocs = await songSchema.countDocuments({guildId}).exec()
 
@@ -35,13 +35,13 @@ module.exports = {
             nowPlaying: false,
             queueNumber: countDocs + 1
           }).save()
-        } finally {
-          mongoose.connection.close()
+        } catch (err) {
+          console.log(err);
         }
       })
 
       if(!countDocs) {
-        await mongodb().then(async mongoose => {
+        await mongodb().then(async () => {
           try {
             const song = await songSchema.findOne({songTitle})
 
@@ -54,20 +54,20 @@ module.exports = {
 
             return channel.send(embeds)
 
-          } finally {
-            mongoose.connection.close()
+          } catch (err) {
+            console.log(err);
           }
         })
       } else {
-        await mongodb().then(async mongoose => {
+        await mongodb().then(async () => {
           try {
             const embeds = new MessageEmbed()
                   .setColor("ORANGE")
                   .setDescription(`Queued [${songTitle}](${songURL}) By <@${author.id}>`)
 
             return channel.send(embeds)
-          } finally {
-            mongoose.connection.close()
+          } catch (err) {
+            console.log(err);
           }
         })
       }

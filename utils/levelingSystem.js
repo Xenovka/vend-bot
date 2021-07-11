@@ -14,7 +14,7 @@ module.exports = (client) => {
 const addXP = async (guildId, userId, amount, message) => {
   const { channel, member } = message;
 
-  await mongodb().then(async (mongoose) => {
+  await mongodb().then(async () => {
     try {
       const userProfile = await userSchema.findOneAndUpdate(
         { guildId, userId },
@@ -35,8 +35,8 @@ const addXP = async (guildId, userId, amount, message) => {
       }
 
       await userSchema.updateOne({ guildId, userId }, { level, xp });
-    } finally {
-      mongoose.connection.close();
+    } catch (err) {
+      console.log(err);
     }
   });
 };

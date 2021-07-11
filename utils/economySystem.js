@@ -12,15 +12,15 @@ module.exports = (client) => {
 };
 
 const addCoins = async (guildId, userId, amount) => {
-  await mongodb().then(async (mongoose) => {
+  await mongodb().then(async () => {
     try {
       await userSchema.findOneAndUpdate(
         { guildId, userId },
         { guildId, userId, $inc: { coins: amount } },
         { upsert: true }
       );
-    } finally {
-      mongoose.connection.close();
+    } catch (err) {
+      console.log(err);
     }
   });
 };
