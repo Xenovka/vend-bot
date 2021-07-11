@@ -1,13 +1,15 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-  commands: 'help',
+  commands: "help",
   cooldown: 5,
-  callback: (message, arguments, argsText) => {
+  callback: ({ message }) => {
     const embed = new MessageEmbed()
       .setAuthor("Bot Commands 🤖")
       .setColor("ORANGE")
-      .setFooter("hover over a commands for more infomations about that command!")
+      .setFooter(
+        "hover over a commands for more infomations about that command!"
+      )
       .setURL("https://www.remote.tools/remote-work/discord-everyone-here")
       .setTimestamp()
       .setDescription(
@@ -28,7 +30,8 @@ module.exports = {
         },
         {
           name: "Socials  💬",
-          value: "[`angry`](https://github.com/uzair-ashraf/ 'angry reaction.') [`happy`](https://github.com/uzair-ashraf/ 'happy reaction.') [`dance`](https://github.com/uzair-ashraf/ 'dance reaction.') [`calm`](https://github.com/uzair-ashraf/ 'calm reaction.') [`confused`](https://github.com/uzair-ashraf/ 'confused reaction.') [`random`](https://github.com/uzair-ashraf/ 'random reaction.') [`exercise`](https://github.com/uzair-ashraf/ 'exercise reaction.') [`sad`](https://github.com/uzair-ashraf/ 'sad reaction.') [`no`](https://github.com/uzair-ashraf/ 'no reaction.') [`yes`](https://github.com/uzair-ashraf/ 'yes reaction.') [`thinking`](https://github.com/uzair-ashraf/ 'thinking reaction.') [`eat`](https://github.com/uzair-ashraf/ 'eat reaction.') [`smug`](https://github.com/uzair-ashraf/ 'smug reaction.')",
+          value:
+            "[`angry`](https://github.com/uzair-ashraf/ 'angry reaction.') [`happy`](https://github.com/uzair-ashraf/ 'happy reaction.') [`dance`](https://github.com/uzair-ashraf/ 'dance reaction.') [`calm`](https://github.com/uzair-ashraf/ 'calm reaction.') [`confused`](https://github.com/uzair-ashraf/ 'confused reaction.') [`random`](https://github.com/uzair-ashraf/ 'random reaction.') [`exercise`](https://github.com/uzair-ashraf/ 'exercise reaction.') [`sad`](https://github.com/uzair-ashraf/ 'sad reaction.') [`no`](https://github.com/uzair-ashraf/ 'no reaction.') [`yes`](https://github.com/uzair-ashraf/ 'yes reaction.') [`thinking`](https://github.com/uzair-ashraf/ 'thinking reaction.') [`eat`](https://github.com/uzair-ashraf/ 'eat reaction.') [`smug`](https://github.com/uzair-ashraf/ 'smug reaction.')",
           inline: true
         },
         {
@@ -38,17 +41,19 @@ module.exports = {
           inline: true
         },
         {
-          name: "Coming Soon  🎮",
-          value: "[`some commands still under development by the developer, Thanks.`](https://github.com/Xenovka?tab=repositories 'Coming Soon!')",
+          name: "Economy  💸",
+          value:
+            "[`balance`](https://github.com/Xenovka?tab=repositories 'Check your balance.')",
           inline: true
         },
         {
           name: "Coming Soon  🎮",
-          value: "[`some commands still under development by the developer, Thanks.`](https://github.com/Xenovka?tab=repositories 'Coming Soon!')",
+          value:
+            "[`some commands still under development by the developer, Thanks.`](https://github.com/Xenovka?tab=repositories 'Coming Soon!')",
           inline: true
         }
       );
 
     message.channel.send(embed);
   }
-}
+};

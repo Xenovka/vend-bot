@@ -1,7 +1,7 @@
 module.exports = {
-  commands: 'join',
-  callback: async (message, arguments, argsText) => {
-    const {guild, member} = message
+  commands: "join",
+  callback: async ({ message }) => {
+    const { guild, member } = message;
 
     if (!guild) return;
 
@@ -17,4 +17,4 @@ module.exports = {
       );
     }
   }
-}
+};

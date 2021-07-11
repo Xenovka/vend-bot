@@ -1,11 +1,13 @@
 module.exports = {
-  commands: 'ping',
+  commands: "ping",
   cooldown: 5,
-  callback: (message, arguments, argsText, client) => {
-    message.channel.send('Loading. . .').then(result => {
-      const ping = result.createdTimestamp - message.createdTimestamp
+  callback: ({ message, client }) => {
+    message.channel.send("Loading. . .").then((result) => {
+      const ping = result.createdTimestamp - message.createdTimestamp;
 
-      result.edit(`Bot Latency: ${ping}ms\nServer Latency: ${client.ws.ping}ms`);
-    })
+      result.edit(
+        `Bot Latency: ${ping}ms\nServer Latency: ${client.ws.ping}ms`
+      );
+    });
   }
-}
+};

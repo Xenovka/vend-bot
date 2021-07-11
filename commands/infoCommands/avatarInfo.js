@@ -1,16 +1,16 @@
 const { MessageEmbed } = require("discord.js");
 
 module.exports = {
-  commands: 'avatar',
+  commands: "avatar",
   cooldown: 10,
   minArgs: 0,
   maxArgs: 1,
-  callback: (message, arguments, argsText) => {
-    const {author, channel, mentions, guild} = message
+  callback: ({ message }) => {
+    const { author, channel, mentions, guild } = message;
 
-    const mentionedUser = mentions.users.first()
+    const mentionedUser = mentions.users.first();
 
-    if(!mentionedUser) {
+    if (!mentionedUser) {
       const embeds = new MessageEmbed()
         .setAuthor(`${author.username}'s avatar`)
         .setImage(author.avatarURL())
@@ -18,7 +18,7 @@ module.exports = {
         .setTimestamp();
 
       channel.send(embeds);
-      return
+      return;
     }
 
     const embeds = new MessageEmbed()
@@ -28,8 +28,5 @@ module.exports = {
       .setTimestamp();
 
     channel.send(embeds);
-    
   }
-
-}
-
+};

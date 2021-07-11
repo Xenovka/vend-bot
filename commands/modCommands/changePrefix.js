@@ -8,11 +8,11 @@ module.exports = {
     'Only member with permission of "ADMINISTRATOR" can use this command.',
   minArgs: 1,
   maxArgs: 1,
-  permissions: 'ADMINISTRATOR',
-  callback: async (message, arguments, argsText) => {
-    const { guild} = message
+  permissions: "ADMINISTRATOR",
+  callback: async ({ message, args }) => {
+    const { guild } = message;
 
-    const newPrefix = arguments[0]
+    const newPrefix = args[0];
 
     await mongodb().then(async () => {
       try {
@@ -21,10 +21,9 @@ module.exports = {
         });
 
         message.reply(`Prefix changed! now the bot prefix is '${newPrefix}'`);
-      } catch(err) {
-        console.log(err)
+      } catch (err) {
+        console.log(err);
       }
     });
   }
 };
-
