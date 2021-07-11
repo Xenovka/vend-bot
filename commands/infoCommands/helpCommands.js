@@ -19,7 +19,7 @@ module.exports = {
         {
           name: "Information  👀",
           value:
-            "[`help`](https://discord.com/ 'Showing available commands') [`server`](https://discord.com/ 'Showing server info') [`bot`](https://github.com/Xenovka?tab=repositories 'Showing bot info') [`invite`](https://discord.com/ 'Creating Server's invite link') [`ping`](https://discord.com/ 'Check Bot and Server Latency') [`avatar`](https://discord.com/ 'Showing user's avatar')",
+            "[`help`](https://discord.com/ 'Showing available commands') [`server`](https://discord.com/ 'Showing server info') [`bot`](https://github.com/Xenovka?tab=repositories 'Showing bot info') [`info`](https://discord.com/ 'Showing user info') [`invite`](https://discord.com/ 'Creating Server's invite link') [`ping`](https://discord.com/ 'Check Bot and Server Latency') [`avatar`](https://discord.com/ 'Showing user's avatar')",
           inline: true
         },
         {
