@@ -43,7 +43,7 @@ module.exports = {
         {
           name: "Economy  💸",
           value:
-            "[`balance`](https://github.com/Xenovka?tab=repositories 'Check your balance.')",
+            "[`balance`](https://github.com/Xenovka?tab=repositories 'Check your balance.') [`daily`](https://github.com/Xenovka?tab=repositories 'Claim daily rewards.')",
           inline: true
         },
         {
