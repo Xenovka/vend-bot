@@ -15,4 +15,4 @@ const dailyRewardSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.Model("daily-reward", dailyRewardSchema);
+module.exports = mongoose.model("daily-reward", dailyRewardSchema);
