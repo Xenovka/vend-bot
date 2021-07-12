@@ -56,13 +56,15 @@ module.exports = async (client, commandOptions) => {
 
         let cooldownString = `${guild.id}-${member.id}-${commands[0]}`;
 
-        if (cooldown > 0 && recentlyUsed.includes(cooldownString)) {
+        if (recentlyUsed.includes(cooldownString)) {
+          const now = new Date().getSeconds();
+          cooldown -= now % 5;
           message
             .reply(
               `Slow down, You have to wait for **${cooldown} seconds** to use this command again.`
             )
             .then(async (msg) => {
-              await msg.delete({ timeout: 2000 });
+              await msg.delete({ timeout: cooldown * 1000 });
             });
           return;
         }
