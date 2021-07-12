@@ -11,7 +11,7 @@ const dailyRewardSchema = new mongoose.Schema(
     userId: reqString
   },
   {
-    timestamp: true
+    timestamps: true
   }
 );
 
