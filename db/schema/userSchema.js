@@ -13,6 +13,8 @@ const numberDefault = {
 const userSchema = new mongoose.Schema({
   guildId: stringRequired,
   userId: stringRequired,
+  username: stringRequired,
+  usertag: stringRequired,
   coins: numberDefault,
   xp: numberDefault,
   level: numberDefault
