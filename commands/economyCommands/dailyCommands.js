@@ -1,9 +1,13 @@
+const humanize = require("humanize-duration");
 const mongodb = require("../../db/mongodb");
 const dailyRewardSchema = require("../../db/schema/dailyRewardSchema");
 const userSchema = require("../../db/schema/userSchema");
 
 let claimedCache = [];
-const dailyRewards = 2500;
+const dailyRewards = {
+  coins: 2500,
+  exp: 1000
+};
 
 const clearCache = () => {
   claimedCache = [];
@@ -20,10 +24,6 @@ module.exports = {
 
     const guildId = guild.id;
     const userId = member.id;
-
-    if (claimedCache.includes(userId)) {
-      return message.reply("You **already claimed** the daily rewards!");
-    }
 
     const filObj = {
       guildId,
@@ -43,8 +43,15 @@ module.exports = {
 
           if (diffDays <= 1) {
             claimedCache.push(userId);
-
-            return message.reply("You **already claimed** the daily rewards!");
+            const timeClaimed = humanize(diffTime, {
+              units: ["h", "m", "s"],
+              round: true,
+              conjunction: " and ",
+              serialComma: false
+            });
+            return message.reply(
+              `You **already claimed** your daily rewards **${timeClaimed} ago**. You can claimed your daily rewards after **22 hours.**`
+            );
           }
         }
 
@@ -54,7 +61,11 @@ module.exports = {
 
         await userSchema.findOneAndUpdate(
           filObj,
-          { guildId, userId, $inc: { coins: dailyRewards } },
+          {
+            guildId,
+            userId,
+            $inc: { coins: dailyRewards.coins, exp: dailyRewards.exp }
+          },
           { upsert: true }
         );
 
