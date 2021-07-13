@@ -40,7 +40,6 @@ module.exports = {
 
           const diffTime = Math.abs(now - then);
           const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 22));
-          console.log(diffDays);
 
           if (diffDays < 1) {
             claimedCache.push(userId);
