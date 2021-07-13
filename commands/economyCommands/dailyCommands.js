@@ -39,9 +39,10 @@ module.exports = {
           const now = new Date().getTime();
 
           const diffTime = Math.abs(now - then);
-          const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+          const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 22));
+          console.log(diffDays);
 
-          if (diffDays <= 1) {
+          if (diffDays < 1) {
             claimedCache.push(userId);
             const timeClaimed = humanize(diffTime, {
               units: ["h", "m", "s"],
@@ -50,7 +51,7 @@ module.exports = {
               serialComma: false
             });
             return message.reply(
-              `You **already claimed** your daily rewards **${timeClaimed} ago**. You can claimed your daily rewards after **22 hours.**`
+              `You **just claimed** your daily rewards **${timeClaimed} ago**. You can claim your daily rewards after **22 hours.**`
             );
           }
         }
@@ -72,7 +73,7 @@ module.exports = {
         claimedCache.push(userId);
 
         message.reply(
-          `Just **claimed ${dailyRewards} coins** as the daily rewards!`
+          `Just **claimed ${dailyRewards.coins} coins** and **${dailyRewards.exp}** as the daily rewards!`
         );
       } catch (err) {
         console.log(err);
