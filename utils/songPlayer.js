@@ -2,7 +2,13 @@ const ytdl = require("ytdl-core");
 const mongodb = require("../db/mongodb");
 const songSchema = require("../db/schema/songSchema");
 
-const songPlayer = async (channel, guildId, song, connection) => {
+const songPlayer = async (
+  channel,
+  guildId,
+  song,
+  connection,
+  beginTime = "0:00"
+) => {
   await connection.voice.setSelfDeaf(true);
 
   if (!song) {
@@ -29,7 +35,7 @@ const songPlayer = async (channel, guildId, song, connection) => {
   });
 
   connection
-    .play(ytdl(song.songURL, { filter: "audioonly" }))
+    .play(ytdl(song.songURL, { filter: "audioonly", begin: beginTime }))
     .on("finish", async () => {
       await mongodb().then(async () => {
         try {
