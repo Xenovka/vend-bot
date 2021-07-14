@@ -1,4 +1,3 @@
-const ytdl = require("ytdl-core");
 const mongodb = require("../../db/mongodb");
 const songSchema = require("../../db/schema/songSchema");
 const songPlayer = require("../../utils/songPlayer");
