@@ -2,6 +2,18 @@ const mongodb = require("../../db/mongodb");
 const songSchema = require("../../db/schema/songSchema");
 const { MessageButton, MessageActionRow } = require("discord-buttons");
 
+let buttonPrev = new MessageButton()
+  .setStyle("grey")
+  .setLabel("Prev")
+  .setID("button_prev");
+
+let buttonNext = new MessageButton()
+  .setStyle("grey")
+  .setLabel("Next")
+  .setID("button_next");
+
+let buttons = new MessageActionRow().addComponents(buttonPrev, buttonNext);
+
 module.exports = {
   commands: ["queue", "q"],
   callback: async ({ message, client }) => {
@@ -9,26 +21,19 @@ module.exports = {
 
     await mongodb().then(async () => {
       try {
-        let buttonPrev = new MessageButton()
-          .setStyle("grey")
-          .setLabel("Prev")
-          .setID("button_prev");
-
-        let buttonNext = new MessageButton()
-          .setStyle("grey")
-          .setLabel("Next")
-          .setID("button_next");
-
-        let buttons = new MessageActionRow().addComponents(
-          buttonPrev,
-          buttonNext
-        );
-
-        const getPage = await songSchema.paginate({}, { limit: 5 });
+        const getPage = await songSchema.paginate({}, { limit: 10 });
 
         let messages = await queueMessage(getPage.page);
 
-        channel.send(messages + "```", buttonNext);
+        if (getPage.totalDocs === 0) {
+          channel.send("Queue is Empty!");
+          return;
+        } else if (getPage.totalPages === 1) {
+          channel.send(messages);
+          return;
+        }
+
+        channel.send(messages, buttonNext);
 
         let counter = getPage.page;
 
@@ -39,11 +44,11 @@ module.exports = {
             messages = await queueMessage(counter);
 
             if (counter === getPage.totalPages) {
-              button.message.edit(messages + "```", buttonPrev);
+              button.message.edit(messages, buttonPrev);
               return;
             }
 
-            button.message.edit(messages + "```", buttons);
+            button.message.edit(messages, buttons);
           }
 
           if (button.id === "button_prev") {
@@ -52,11 +57,11 @@ module.exports = {
             messages = await queueMessage(counter);
 
             if (counter === 1) {
-              button.message.edit(messages + "```", buttonNext);
+              button.message.edit(messages, buttonNext);
               return;
             }
 
-            button.message.edit(messages + "```", buttons);
+            button.message.edit(messages, buttons);
           }
         });
       } catch (err) {
@@ -73,18 +78,18 @@ const queueMessage = async (pageNum) => {
     try {
       let currentDocs = await songSchema.paginate(
         {},
-        { page: pageNum, limit: 5 }
+        { page: pageNum, limit: 10 }
       );
       let songs = [];
 
       songs.push(currentDocs.docs);
 
       for (let i = 0; i < currentDocs.docs.length; i++) {
-        let title = songs[0][i].songTitle;
-        if (title.length >= 50) {
-          title = title.slice(0, 50) + "...";
+        let title = songs[0][i].songTitle.replace("'", "");
+        if (title.length >= 35) {
+          title = title.slice(0, 35) + "...";
         } else {
-          title += " ".repeat(53 - title.length);
+          title += " ".repeat(38 - title.length);
         }
 
         queueMessage += `${songs[0][i].queueNumber}) ${title} ${songs[0][i].songDuration}\n`;
@@ -94,5 +99,5 @@ const queueMessage = async (pageNum) => {
     }
   });
 
-  return queueMessage;
+  return queueMessage + "```";
 };
