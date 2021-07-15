@@ -4,7 +4,6 @@ const userSchema = require("../../db/schema/userSchema");
 
 module.exports = {
   commands: "flip",
-  cooldown: 5,
   expectedArgs: "[amount] [head/tail]",
   minArgs: 2,
   maxArgs: 2,
