@@ -4,11 +4,12 @@ const moment = require("moment");
 module.exports = {
   commands: "bot",
   cooldown: 5,
-  callback: ({ message, client }) => {
+  callback: async ({ message, client }) => {
     const { channel } = message;
-    const app = client.user;
-    const appIcon = app.avatarURL();
-    const appName = app.username;
+    const app = await client.fetchApplication();
+    const appOwner = app.owner.tag;
+    const appIcon = app.iconURL();
+    const appName = app.name;
     const appCreatedAt = moment(app.createdAt).format("MMMM Do YYYY");
 
     const seconds = moment.duration(client.uptime).seconds();
@@ -23,7 +24,7 @@ module.exports = {
       .addFields(
         {
           name: "Creator",
-          value: "vend#4963",
+          value: appOwner,
           inline: true
         },
         { name: "_ _", value: "_ _", inline: true },
