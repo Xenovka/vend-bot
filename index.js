@@ -13,6 +13,10 @@ const createDefaultPrefix = require("./utils/createDefaultPrefix");
 const levelingSystem = require("./utils/levelingSystem");
 const economySystem = require("./utils/economySystem");
 
+app.listen(process.env.PORT, () => {
+  console.log("Connected to Server!");
+});
+
 client.login(process.env.TOKEN);
 
 client.on("ready", async () => {
@@ -61,8 +65,4 @@ client.on("ready", () => {
 
   // Economy System
   economySystem(client);
-});
-
-app.listen(process.env.PORT, () => {
-  console.log("Connected to Server!");
 });
