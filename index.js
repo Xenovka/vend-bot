@@ -2,8 +2,6 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const path = require("path");
 const client = new Discord.Client().setMaxListeners(0);
-const express = require("express");
-const app = express();
 require("discord-buttons")(client);
 require("dotenv").config();
 
@@ -12,6 +10,9 @@ const welcomeMessage = require("./misc/welcomeMessage");
 const createDefaultPrefix = require("./utils/createDefaultPrefix");
 const levelingSystem = require("./utils/levelingSystem");
 const economySystem = require("./utils/economySystem");
+const keepAlive = require("./server");
+
+keepAlive();
 
 client.login(process.env.TOKEN);
 
