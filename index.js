@@ -2,6 +2,8 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const path = require("path");
 const client = new Discord.Client().setMaxListeners(0);
+const express = require("express");
+const app = express();
 require("discord-buttons")(client);
 require("dotenv").config();
 
@@ -59,4 +61,8 @@ client.on("ready", () => {
 
   // Economy System
   economySystem(client);
+});
+
+app.listen(process.env.PORT, () => {
+  console.log("Connected to Server!");
 });
