@@ -23,12 +23,6 @@ module.exports = {
           inline: true
         },
         {
-          name: "Voice  🎶",
-          value:
-            "[`dc`](https://discord.com 'Disconnecting the bot from the Voice Channel') [`join`](https://discord.com/ 'Telling the bot to join a Voice Channel') [`play`](https://discord.com/ 'Playing an audio from youtube. Usage: play [songTitle]') [`lyrics`](https://www.npmjs.com/package/lyrics-finder/ 'Find a song lyrics. Usage: lyrics [songTitle]') \n [`skip`](https://discord.com/ 'Skip current playing song.') [`queue`](https://discord.com/ 'Showing the list of songs in queue.') ",
-          inline: true
-        },
-        {
           name: "Socials  👋",
           value:
             "[`angry`](https://github.com/uzair-ashraf/ 'angry reaction.') [`happy`](https://github.com/uzair-ashraf/ 'happy reaction.') [`dance`](https://github.com/uzair-ashraf/ 'dance reaction.') [`calm`](https://github.com/uzair-ashraf/ 'calm reaction.') [`confused`](https://github.com/uzair-ashraf/ 'confused reaction.') [`random`](https://github.com/uzair-ashraf/ 'random reaction.') [`exercise`](https://github.com/uzair-ashraf/ 'exercise reaction.') [`sad`](https://github.com/uzair-ashraf/ 'sad reaction.') [`no`](https://github.com/uzair-ashraf/ 'no reaction.') [`yes`](https://github.com/uzair-ashraf/ 'yes reaction.') [`thinking`](https://github.com/uzair-ashraf/ 'thinking reaction.') [`eat`](https://github.com/uzair-ashraf/ 'eat reaction.') [`smug`](https://github.com/uzair-ashraf/ 'smug reaction.')",
@@ -44,6 +38,12 @@ module.exports = {
           name: "Games  🎮",
           value:
             "[`daily`](https://github.com/Xenovka?tab=repositories 'Claim daily rewards.') [`flip`](https://github.com/Xenovka?tab=repositories 'Flip the coin game with betting amount.') [`rps`](https://github.com/Xenovka?tab=repositories 'Rock Paper Scissors Against the Bot.') [`dice`](https://github.com/Xenovka?tab=repositories 'Roll the dice with betting amount against the Bot.')",
+          inline: true
+        },
+        {
+          name: "Coming Soon  🎮",
+          value:
+            "[`some commands still under development by the developer, Thanks.`](https://github.com/Xenovka?tab=repositories 'Coming Soon!')",
           inline: true
         },
         {
