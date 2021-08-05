@@ -11,8 +11,9 @@ const createDefaultPrefix = require("./utils/createDefaultPrefix");
 const levelingSystem = require("./utils/levelingSystem");
 const economySystem = require("./utils/economySystem");
 const keepAlive = require("./server");
+const memberChangedLogs = require("./misc/memberChangedLogs");
 
-keepAlive();
+// keepAlive();
 
 client.login(process.env.TOKEN);
 
@@ -62,4 +63,7 @@ client.on("ready", () => {
 
   // Economy System
   economySystem(client);
+
+  //AuditLogs
+  memberChangedLogs(client);
 });
