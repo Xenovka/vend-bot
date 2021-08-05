@@ -39,18 +39,6 @@ module.exports = {
           value:
             "[`daily`](https://github.com/Xenovka?tab=repositories 'Claim daily rewards.') [`flip`](https://github.com/Xenovka?tab=repositories 'Flip the coin game with betting amount.') [`rps`](https://github.com/Xenovka?tab=repositories 'Rock Paper Scissors Against the Bot.') [`dice`](https://github.com/Xenovka?tab=repositories 'Roll the dice with betting amount against the Bot.')",
           inline: true
-        },
-        {
-          name: "Coming Soon  🎮",
-          value:
-            "[`some commands still under development by the developer, Thanks.`](https://github.com/Xenovka?tab=repositories 'Coming Soon!')",
-          inline: true
-        },
-        {
-          name: "Coming Soon  🎮",
-          value:
-            "[`some commands still under development by the developer, Thanks.`](https://github.com/Xenovka?tab=repositories 'Coming Soon!')",
-          inline: true
         }
       );
 
